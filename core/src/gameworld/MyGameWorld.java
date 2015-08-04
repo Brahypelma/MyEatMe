@@ -2,6 +2,7 @@ package gameworld;
 
 import com.badlogic.gdx.Gdx;
 
+
 import java.util.*;
 
 
@@ -14,6 +15,9 @@ public class MyGameWorld {
     private ArrayList<Smile> smiles;
     private Random random;
     private Smile smile;
+
+
+
 
 
     public MyGameWorld() {
@@ -33,6 +37,10 @@ public class MyGameWorld {
         for(int i = 0;i <smiles.size();i++) {
             smiles.get(i).update(delta);
             smile = smiles.get(i);
+           crashSmiles(i);
+
+
+
         }
 
 
@@ -45,7 +53,7 @@ public class MyGameWorld {
 
 
 
-
+public void crashSmiles(int i) {}
 
 
 
