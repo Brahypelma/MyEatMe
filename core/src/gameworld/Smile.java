@@ -4,6 +4,7 @@ package gameworld;
 import com.badlogic.gdx.math.Vector2;
 
 
+import com.badlogic.gdx.math.Rectangle;
 import java.util.Random;
 
 /**
@@ -18,7 +19,7 @@ public class Smile {
     private Vector2 lastPosition;
 
 
-
+private Rectangle rect;
 
 
     Random random = new Random();
@@ -31,6 +32,8 @@ public class Smile {
 
        position = new Vector2(x,y);
         lastPosition = new Vector2(x,y);
+       rect = new Rectangle((int)position.x,(int)position.y,weight,height);
+
 
 
     }
@@ -74,4 +77,9 @@ public class Smile {
         lastPosition.y = random.nextInt(480 - height);
 
     }
+    public Rectangle getRect() {
+        return rect;
+    }
+
 }
+
