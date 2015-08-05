@@ -11,12 +11,13 @@ import java.util.Random;
  * Created by Senheizer on 26.07.2015.
  */
 public class Smile {
-    private Vector2 position;
+
     private Vector2 speed;
-    private int weight;
-    private int height;
+
     private int size;
-    private Vector2 lastPosition;
+    int lastPositionX;
+    int lastPositionY;
+
 
 
 private Rectangle rect;
@@ -26,55 +27,52 @@ private Rectangle rect;
 
 
     public Smile (float x,float y , int weight, int height) {
+        rect = new Rectangle(x,y,weight,height);
 
-        this.height = height;
-        this.weight = weight;
+        this.rect.height = height;
+        this.rect.width = weight;
+        this.rect.x = x;
+        this.rect.y = y;
 
-       position = new Vector2(x,y);
-        lastPosition = new Vector2(x,y);
-       rect = new Rectangle((int)position.x,(int)position.y,weight,height);
+
+
+
 
 
 
     }
     public void update(float delta) {
-        if(lastPosition==null) {
+        if (lastPositionX == 0 && lastPositionY == 0) {
             setMyCordinats();
         }
-        if(position.x > lastPosition.x) {
-            position.x--;
-        }
-        else if(position.y > lastPosition.y) {
-            position.y--;
-        }else if (position.x < lastPosition.x) {
-            position.x++;
-        }else if (position.y <lastPosition.y ) {
-            position.y++;
-        }else setMyCordinats();
+        if (rect.x > lastPositionX) {
 
+            rect.x--;
+        } else if (rect.y > lastPositionY) {
 
+            rect.y--;
+        } else if (rect.x < lastPositionX) {
 
+            rect.x++;
+        } else if (rect.y < lastPositionY) {
+
+            rect.y++;
+        } else setMyCordinats();
 
 
     }
 
-    public float getX() {
-        return position.x;
 
-    }
-    public float getY() {
-        return position.y;
-    }
-    public int getWeight() {
-        return weight;
-    }
-    public int getHeight() {
-        return height;
-    }
+
+
+
+
+
+
 
     private void setMyCordinats() {
-        lastPosition.x = random.nextInt(800 - weight);
-        lastPosition.y = random.nextInt(480 - height);
+         lastPositionX = random.nextInt(800 - (int)rect.width);
+        lastPositionY = random.nextInt(480 - (int)rect.height);
 
     }
     public Rectangle getRect() {
