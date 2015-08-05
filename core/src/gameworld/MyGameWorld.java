@@ -37,7 +37,7 @@ public class MyGameWorld {
         for(int i = 0;i <smiles.size();i++) {
             smiles.get(i).update(delta);
             smile = smiles.get(i);
-           crashSmiles(i);
+          // crashSmiles(i);
 
 
 
@@ -53,7 +53,16 @@ public class MyGameWorld {
 
 
 
-public void crashSmiles(int i) {}
+public void crashSmiles(int i) {
+    for(int j = 0; j <smiles.size();j++) {
+        if(i == j) {
+        }
+        if(smiles.get(i).getRect().overlaps(smiles.get(j).getRect())) {
+            smiles.remove(i);
+        }
+
+    }
+}
 
 
 
