@@ -1,6 +1,6 @@
 package gameworld;
 
-import com.badlogic.gdx.Gdx;
+
 
 
 import java.util.*;
@@ -14,7 +14,8 @@ public class MyGameWorld {
 
     private ArrayList<Smile> smiles;
     private Random random;
-    private Smile smile;
+
+    private float fps;
 
 
 
@@ -33,15 +34,15 @@ public class MyGameWorld {
 
 
     public void update(float delta) {
-        Gdx.app.log("MyGameWorld", "update");
+        this.fps = delta;
+
         for(int i = 0;i <smiles.size();i++) {
             smiles.get(i).update(delta);
-            smile = smiles.get(i);
-          // crashSmiles(i);
-
-
 
         }
+        crashSmiles(smiles);
+        bornNewSmile(smiles);
+
 
 
 
@@ -53,16 +54,35 @@ public class MyGameWorld {
 
 
 
-public void crashSmiles(int i) {
-    for(int j = 0; j <smiles.size();j++) {
-        if(i == j) {
-        }
-        if(smiles.get(i).getRect().overlaps(smiles.get(j).getRect())) {
-            smiles.remove(i);
-        }
+public void crashSmiles(ArrayList<Smile> smiles) {
 
+for ( int i = 0; i < smiles.size();i++) {
+    for ( int j = 0; j < smiles.size(); j++) {
+        if ( i == j ) {
+
+        }
+        else if (smiles.get(i).getRect().overlaps(smiles.get(j).getRect()))
+        {
+            smiles.remove(i);
+
+        }
     }
 }
+
+
+
+
+    }
+    public void bornNewSmile(ArrayList<Smile> smiles) {
+        while (smiles.size()<10) {
+            smiles.add(new Smile(random.nextInt(768),random.nextInt(448),32,32));
+
+        }
+    }
+
+    public float getFps() {
+        return fps;
+    }
 
 
 
