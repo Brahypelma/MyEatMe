@@ -32,7 +32,7 @@ public class MyGameRenderer {
     }
 
     public void render() {
-        Gdx.app.log("Fps", 1/myWorld.getFps() + " ");
+        Gdx.app.log("Fps", 1 / myWorld.getFps() + " ");
         ArrayList<Smile> mySmile = myWorld.getSmiles();
 
 
@@ -44,8 +44,18 @@ public class MyGameRenderer {
 
         batch.draw(AssetsLoader.bg, 0, 0, 800, 480);
         for (int i = 0; i < mySmile.size(); i++) {
+            if(mySmile.get(i).getColor()==0) {
+                batch.draw(AssetsLoader.greenSmile, mySmile.get(i).getRect().x, mySmile.get(i).getRect().y, mySmile.get(i).getRect().width, mySmile.get(i).getRect().height);
 
-            batch.draw(AssetsLoader.smile, mySmile.get(i).getRect().x, mySmile.get(i).getRect().y, mySmile.get(i).getRect().width, mySmile.get(i).getRect().height);
+            }
+            else if(mySmile.get(i).getColor() ==1 ) {
+                batch.draw(AssetsLoader.redSmile, mySmile.get(i).getRect().x, mySmile.get(i).getRect().y, mySmile.get(i).getRect().width, mySmile.get(i).getRect().height);
+            }
+            else if(mySmile.get(i).getColor() == 2) {
+                batch.draw(AssetsLoader.yellowSmile, mySmile.get(i).getRect().x, mySmile.get(i).getRect().y, mySmile.get(i).getRect().width, mySmile.get(i).getRect().height);
+            }
+
+
 
 
 
