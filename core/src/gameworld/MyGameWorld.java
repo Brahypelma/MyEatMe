@@ -21,13 +21,15 @@ public class MyGameWorld {
 
 
 
+
     public MyGameWorld() {
 
    random = new Random();
    smiles = new ArrayList<Smile>();
-    for( int i = 0;i < 10; i++) {
-        smiles.add(i,new Smile(random.nextInt(768),random.nextInt(448),32,32));
-    }
+        bornNewSmile(smiles);
+
+
+
 
 }
 
@@ -75,9 +77,23 @@ for ( int i = 0; i < smiles.size();i++) {
     }
     public void bornNewSmile(ArrayList<Smile> smiles) {
         while (smiles.size()<10) {
-            smiles.add(new Smile(random.nextInt(768),random.nextInt(448),32,32));
+            int color = random.nextInt(3);
+            if(color == 0) {
+                smiles.add(new GreenSmile(random.nextInt(768), random.nextInt(448), 32, 32,0));
+            }
+            else if(color == 1) {
+                smiles.add(new RedSmile(random.nextInt(768), random.nextInt(448), 32, 32,1));
+            }
+            else if(color == 2) {
+                smiles.add(new YellowSmile(random.nextInt(768), random.nextInt(448), 32, 32,2));
 
-        }
+            }
+
+            }
+
+
+
+
     }
 
     public float getFps() {
