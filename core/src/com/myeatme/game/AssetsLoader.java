@@ -6,17 +6,22 @@ import com.badlogic.gdx.graphics.Texture;
  * Created by Senheizer on 27.07.2015.
  */
 public class AssetsLoader {
-    public static Texture bg,smile,smileGreen;
+    public static Texture bg,redSmile,greenSmile,yellowSmile;
 
     public static void load() {
         bg = new Texture("back.png");
-        smile = new Texture("sm2.png");
-        smileGreen = new Texture(("sm3.png"));
+        redSmile = new Texture("sm2.png");
+         greenSmile = new Texture("sm3.png");
+        yellowSmile = new Texture("sm1.png");
+
 
     }
 
     public static void dispose() {
-        smile.dispose();
+        greenSmile.dispose();
+        redSmile.dispose();
+        yellowSmile.dispose();
+
         bg.dispose();
     }
 }
