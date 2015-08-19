@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
+
 import com.myeatme.game.AssetsLoader;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class MyGameRenderer {
     private SpriteBatch batch;
 
 
+
     public MyGameRenderer(MyGameWorld world) {
         myWorld = world;
         cam = new OrthographicCamera();
@@ -28,6 +30,7 @@ public class MyGameRenderer {
        batch = new SpriteBatch();
 
         batch.setProjectionMatrix(cam.combined);
+
 
     }
 
@@ -42,17 +45,25 @@ public class MyGameRenderer {
         batch.begin();
 
 
+
+
         batch.draw(AssetsLoader.bg, 0, 0, 800, 480);
         for (int i = 0; i < mySmile.size(); i++) {
+
+
             if(mySmile.get(i).getColor()==0) {
                 batch.draw(AssetsLoader.greenSmile, mySmile.get(i).getRect().x, mySmile.get(i).getRect().y, mySmile.get(i).getRect().width, mySmile.get(i).getRect().height);
 
-            }
-            else if(mySmile.get(i).getColor() ==1 ) {
+
+
+            } else if (mySmile.get(i).getColor() == 1) {
                 batch.draw(AssetsLoader.redSmile, mySmile.get(i).getRect().x, mySmile.get(i).getRect().y, mySmile.get(i).getRect().width, mySmile.get(i).getRect().height);
-            }
-            else if(mySmile.get(i).getColor() == 2) {
+
+
+            } else if (mySmile.get(i).getColor() == 2) {
                 batch.draw(AssetsLoader.yellowSmile, mySmile.get(i).getRect().x, mySmile.get(i).getRect().y, mySmile.get(i).getRect().width, mySmile.get(i).getRect().height);
+
+
             }
 
 
@@ -62,6 +73,7 @@ public class MyGameRenderer {
 
         }
         batch.end();
+
 
 
 
