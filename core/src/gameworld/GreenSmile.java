@@ -6,13 +6,10 @@ package gameworld;
 public class GreenSmile extends Smile {
 
 
-    public GreenSmile(float x, float y, int weight, int height,int color) {
-        super(x, y, weight, height,color);
+    public GreenSmile(float x, float y, int color, int size) {
+        super(x, y, color, size);
     }
-
-
-
-    }
+}
 
 
 
