@@ -5,7 +5,8 @@ package gameworld;
  */
 public class YellowSmile extends Smile {
 
-    public YellowSmile(float x, float y, int weight, int height,int color) {
-        super(x, y, weight, height,color);
+
+    public YellowSmile(float x, float y, int color, int size) {
+        super(x, y, color, size);
     }
 }
