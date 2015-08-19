@@ -28,14 +28,26 @@ public class Smile {
     Random random = new Random();
 
 
-    public Smile(float x, float y, int weight, int height,int color) {
-        rect = new Rectangle(x, y, weight, height);
+    public Smile(float x, float y,int color,int size) {
+       int radius;
+        if(size == 0) {
+           radius = 50;
 
-        this.rect.height = height;
-        this.rect.width = weight;
+        }else
+        radius = size*10;
+
+
+
+
+
+        rect = new Rectangle(x, y, radius,radius);
+
+        this.rect.height = radius ;
+        this.rect.width = radius;
         this.rect.x = x;
         this.rect.y = y;
         this.color = color;
+        this.size = size;
 
 
 
