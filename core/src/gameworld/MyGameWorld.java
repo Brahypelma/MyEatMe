@@ -3,6 +3,8 @@ package gameworld;
 
 
 
+import com.badlogic.gdx.Gdx;
+
 import java.util.*;
 
 
@@ -57,6 +59,7 @@ public class MyGameWorld {
 
 
 public void crashSmiles(ArrayList<Smile> smiles) {
+    Gdx.app.log("CrashSmiles","onWork");
 
     for (int i = 0; i < smiles.size(); i++) {
         for (int j = 0; j < smiles.size(); j++) {
@@ -65,7 +68,7 @@ public void crashSmiles(ArrayList<Smile> smiles) {
             } else if (smiles.get(i).getRect().overlaps(smiles.get(j).getRect())) {
                 if (smiles.get(i).getRect().width >= smiles.get(j).getRect().width) {
                     smiles.remove(j);
-                }
+                }else smiles.remove(i);
 
             }
         }
@@ -77,6 +80,7 @@ public void crashSmiles(ArrayList<Smile> smiles) {
 
 
     public void bornNewSmile(ArrayList<Smile> smiles) {
+        Gdx.app.log("Born","born");
 
         while (smiles.size()<10) {
             int color = random.nextInt(3);
