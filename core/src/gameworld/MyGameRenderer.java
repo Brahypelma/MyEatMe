@@ -35,7 +35,7 @@ public class MyGameRenderer {
     }
 
     public void render() {
-        Gdx.app.log("Fps", 1 / myWorld.getFps() + " ");
+
         ArrayList<Smile> mySmile = myWorld.getSmiles();
 
 

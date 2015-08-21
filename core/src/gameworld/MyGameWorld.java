@@ -3,7 +3,7 @@ package gameworld;
 
 
 
-import com.badlogic.gdx.Gdx;
+
 
 import java.util.*;
 
@@ -17,7 +17,7 @@ public class MyGameWorld {
     private ArrayList<Smile> smiles;
     private Random random;
 
-    private float fps;
+
 
 
 
@@ -38,7 +38,7 @@ public class MyGameWorld {
 
 
     public void update(float delta) {
-        this.fps = delta;
+
 
         for(int i = 0;i <smiles.size();i++) {
             smiles.get(i).update(delta);
@@ -58,29 +58,25 @@ public class MyGameWorld {
 
 
 
-public void crashSmiles(ArrayList<Smile> smiles) {
-    Gdx.app.log("CrashSmiles","onWork");
 
-    for (int i = 0; i < smiles.size(); i++) {
-        for (int j = 0; j < smiles.size(); j++) {
-            if (i == j) {
 
-            } else if (smiles.get(i).getRect().overlaps(smiles.get(j).getRect())) {
-                if (smiles.get(i).getRect().width >= smiles.get(j).getRect().width) {
-                    smiles.remove(j);
-                }else smiles.remove(i);
 
-            }
-        }
-    }
-}
+
+
+
+
+
+
+
+
+
 
 
 
 
 
     public void bornNewSmile(ArrayList<Smile> smiles) {
-        Gdx.app.log("Born","born");
+
 
         while (smiles.size()<10) {
             int color = random.nextInt(3);
@@ -101,14 +97,60 @@ public void crashSmiles(ArrayList<Smile> smiles) {
 
 
     }
+   public void crashSmiles(ArrayList<Smile> smiles) {
+       Set<Smile> smileDelete = new HashSet<Smile>();
+       Set<Smile> needToUp = new HashSet<Smile>();
 
-    public float getFps() {
-        return fps;
+       for(Smile x : smiles) {
+           for (Smile y : smiles) {
+               if(x == y) {
+
+               }else if (x.getRect().overlaps(y.getRect())) {
+                   if( x.getRect().width > y.getRect().width) {
+                       smileDelete.add(y);
+                       needToUp.add(x);
+                   }else if ( x.getRect().width <y.getRect().width) {
+                       smileDelete.add(x);
+                       needToUp.add(y);
+
+                   }else {
+                       smileDelete.add(x);
+                       smileDelete.add(y);
+                   }
+
+               }
+           }
+       }
+
+
+for (Smile x : smileDelete) {
+    for (int i = 0; i < smiles.size(); i++) {
+        if ( x == smiles.get(i)) {
+            smiles.remove(i);
+        }
+    }
+}
+       for (Smile x : needToUp) {
+           for (int i = 0; i < smiles.size(); i++) {
+               if ( x == smiles.get(i)) {
+                   smiles.get(i).growUp();
+               }
+           }
+       }
+
+
+
+
+        }
+
     }
 
 
 
-    }
+
+
+
+
 
 
 
