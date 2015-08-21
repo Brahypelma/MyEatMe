@@ -1,6 +1,7 @@
 package gameworld;
 
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 
 
@@ -13,11 +14,14 @@ import java.util.Random;
 public class Smile {
 
     private Vector2 speed;
-
     private int size;
+
+
    private int lastPositionX;
     private int lastPositionY;
     private int color;
+    private int radius;
+
 
 
 
@@ -28,10 +32,12 @@ public class Smile {
     Random random = new Random();
 
 
-    public Smile(float x, float y,int color,int size) {
-       int radius;
+    public Smile(float x,float y , int color , int size) {
+
+
         if(size == 0) {
-           radius = 50;
+           size = 5;
+            radius = size*10;
 
         }else
         radius = size*10;
@@ -68,6 +74,10 @@ public class Smile {
         return rect;
     }
 
+
+
+
+
     public void moveSmile() {
         if (lastPositionX == 0 && lastPositionY == 0) {
             setMyCordinats();
@@ -91,8 +101,24 @@ public class Smile {
     public int getColor() {
         return color;
     }
+    public void growUp() {
+        if ( rect.width ==50) {
+            Gdx.app.log("Ohh" ," Im not hungry");
+        }
+        rect.width = radius + 10;
+        rect.height = radius + 10;
 
-}
+
+
+
+    }
+
+
+    }
+
+
+
+
 
 
 
