@@ -16,11 +16,7 @@ public class MyGameWorld {
 
     private ArrayList<Smile> smiles;
     private Random random;
-
-
-
-
-
+    private Map<Smile,Smile> huntedPair;
 
 
 
@@ -28,26 +24,21 @@ public class MyGameWorld {
 
    random = new Random();
    smiles = new ArrayList<Smile>();
-        bornNewSmile(smiles);
+        bornNewSmile();
 
-
-
-
-}
-
-
+    }
 
     public void update(float delta) {
 
 
-        for(int i = 0;i <smiles.size();i++) {
+        for(int i = 0;i <smiles.size();i++) { // Обновляет статус позиции смайликов изгодя из smiles.update(delta) в котором есть movesmile()
             smiles.get(i).update(delta);
 
+
         }
-        crashSmiles(smiles);
-        bornNewSmile(smiles);
-
-
+        crashSmiles(); //Обрабатывает столкновение,удаляет меньший ,увеличивает больший
+        bornNewSmile(); // Проверяет колличество и рождает новые. их должно быть постоянно 10
+     checkHunting();// проверяет Расстояние между смайлами,Описание ниже
 
 
     }
@@ -56,26 +47,7 @@ public class MyGameWorld {
         return smiles;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public void bornNewSmile(ArrayList<Smile> smiles) {
+    public void bornNewSmile() {
 
 
         while (smiles.size()<10) {
@@ -93,11 +65,8 @@ public class MyGameWorld {
 
             }
 
-
-
-
     }
-   public void crashSmiles(ArrayList<Smile> smiles) {
+   public void crashSmiles() {
        Set<Smile> smileDelete = new HashSet<Smile>();
        Set<Smile> needToUp = new HashSet<Smile>();
 
@@ -142,6 +111,28 @@ for (Smile x : smileDelete) {
 
 
         }
+
+    public void checkHunting() {  //Дописан метод Который Ищет смайлиуи на мальноком расстояниии. опередяет - больше записывае его в Мап ключем,меньший содержанием
+        huntedPair = new HashMap<Smile,Smile>();
+
+        for (Smile x : smiles) {
+            for (Smile y : smiles) {
+                if( x.getRect().width == y.getRect().width) {
+
+                } else if (x.getRect().width > y.getRect().width) {
+                    huntedPair.put(x,y);
+
+                }else if (x.getRect().width < y.getRect().width) {
+                    huntedPair.put(y,x);
+                }
+
+            }
+        }
+
+    }
+
+
+
 
     }
 
